@@ -1,23 +1,26 @@
 import os
-import daoConnection as dao
-import clases as c
+from dao.daoConnection import Connection, DaoCity
+from models.clases import City
 
 os.system('cls')
-conex = dao.Connection("localhost", "root", "", "bdregisters")
+
+conex = Connection("localhost", "root", "", "bdregisters")
 conex.connect()
 
-#instanciar modelo
-city1 = c.City("Managua", 1)
-city2 = c.City("León", 1)
-city3 = c.City("Granada", 1)
-city4 = c.City("Masaya", 1)
-city5 = c.City("Estelí", 1)
-city6 = c.City("Jinotepe", 1)
 
-#instanciar dao
-daoCity = dao.DaoCity(conex)
+# Instanciar objetos de City
+city1 = City("Managua", 1)
+city2 = City("León", 1)
+city3 = City("Granada", 1)
+city4 = City("Masaya", 1)
+city5 = City("Estelí", 1)
+city6 = City("Jinotepe", 1)
 
-#insertar
+
+# Instanciar dao
+daoCity = DaoCity(conex)
+
+# Insertar ciudades
 daoCity.insert(city1)
 daoCity.insert(city2)
 daoCity.insert(city3)

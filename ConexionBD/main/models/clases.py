@@ -1,3 +1,5 @@
+import mysql.connector
+
 class City:
     def __init__(self, name, status):
         self.name = name

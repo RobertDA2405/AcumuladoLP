@@ -35,16 +35,16 @@ class DaoCity:
 
     def get_all(self):
         query = 'SELECT * FROM cities'
-        return self.connection.execute_read_query(query,())
-    
+        return self.connection.execute_read_query(query, ())
+
     def get_by_id(self, id):
         query = 'SELECT * FROM cities WHERE id = %s'
         return self.connection.execute_read_query(query, (id,))
 
     def insert(self, city):
-        query = 'INSER INTO cities (name, status) VALUES (%s, %s)'
+        query = 'INSERT INTO cities (name, status) VALUES (%s, %s)'
         return self.connection.execute_query(query, (city.name, city.status))
-    
+
     def update(self, city):
         query = 'UPDATE city SET name = %s, status = %s WHERE id = %s'
         return self.connection.execute_query(query, (city.name, city.status, city.id))
