@@ -52,3 +52,58 @@ class DaoCity:
     def delete(self, id):
         query = 'DELETE FROM cities WHERE id = %s'
         return self.connection.execute_query(query, (id))
+    
+
+    ######################################################
+
+class DaoJobs:
+    def __init__(self, connection):
+        self.connection = connection
+
+    def get_all(self):
+        query = 'SELECT * FROM jobsj'
+        return self.connection.execute_read_query(query, ())
+
+    def get_by_id(self, id):
+        query = 'SELECT * FROM jobsj WHERE id = %s'
+        return self.connection.execute_read_query(query, (id))
+
+    def insert(self, job):
+        query = 'INSERT INTO jobsj (name, status) VALUES (%s, %s)'
+        return self.connection.execute_query(query, (job.name, job.status))
+
+    def update(self, job):
+        query = 'UPDATE jobsj SET name = %s, status = %s WHERE id = %s'
+        return self.connection.execute_query(query, (job.name, job.status, job.id))
+
+    def delete(self, id):
+        query = 'DELETE FROM jobsj WHERE id = %s'
+        return self.connection.execute_query(query, (id))
+    
+
+
+     ######################################################
+
+class DaoEmployees:
+    def __init__(self, connection):
+        self.connection = connection
+
+    def get_all(self):
+        query = 'SELECT * FROM employees'
+        return self.connection.execute_read_query(query, ())
+
+    def get_by_id(self, id):
+        query = 'SELECT * FROM employees WHERE id = %s'
+        return self.connection.execute_read_query(query, (id))
+
+    def insert(self, job):
+        query = 'INSERT INTO employees (name, status) VALUES (%s, %s)'
+        return self.connection.execute_query(query, (job.name, job.status))
+
+    def update(self, job):
+        query = 'UPDATE employees SET name = %s, status = %s WHERE id = %s'
+        return self.connection.execute_query(query, (job.name, job.status, job.id))
+
+    def delete(self, id):
+        query = 'DELETE FROM employees WHERE id = %s'
+        return self.connection.execute_query(query, (id))
